@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php 
+	if (session_status() !== PHP_SESSION_ACTIVE) 
+		session_start();
+	include "./app/bdd.php";
+	include "./app/user.php";
+?><!DOCTYPE html>
 <html>
 <head>
 	<title>Title of the document</title>
@@ -12,9 +17,19 @@
 				<nav>
 					<a href="index.php">Accueil</a>
 					<a href="panier.php">Panier</a>
+					<?php if (!estConnecte()): ?>
 					<a href="inscription.php">S'inscrire</a>
+					<?php else: ?>
+					<a href="logout.php">Se deconnecter</a>
+					<?php endif; ?>
 				</nav>
 			</div>
 		</header>
 		<section>
+			<?php 
+				if (isset($_SESSION['flash']['connect'])) {
+					echo "<div class='flash'>".$_SESSION['flash']['connect']."</div>";
+					unset($_SESSION['flash']['connect']);
+				}
+			?>
 			<div class="container">

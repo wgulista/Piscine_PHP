@@ -3,15 +3,10 @@
 	$user = "root";
 	$pass = "";
 	$base = "minishop";
-	$bdd = null;
 
-	try {
-		$bdd = mysqli_connect($host, $user, $pass, $base);
-		if ($bdd === false) {
-		    die("ERROR: Could not connect. " . mysqli_connect_error());
-		}
-	} catch (Exception $e) {
-		die("Connexion a la base de donnee echoue !");
+	$bdd = mysqli_connect($host, $user, $pass, $base);
+	if ($bdd === false) {
+		die("ERROR: Could not connect. " . mysqli_connect_error());
 	}
 
 	/**
@@ -20,6 +15,9 @@
 	 */
 	function getAllProducts()
 	{
+		global $bdd;
+		$resultat = array();
+
 		$req = mysqli_prepare($bdd, 'SELECT * FROM products;');
 		mysqli_stmt_execute($req);
 		mysqli_stmt_bind_result($req, $d['id'], $d['name'], $d['content'], $d['price']);
@@ -35,6 +33,9 @@
 	 */
 	function getProducts($ids)
 	{
+		global $bdd;
+		$resultat = array();
+
 		$req = mysqli_prepare($bdd, 'SELECT id, price FROM products WHERE id IN (?);');
 		mysqli_stmt_bind_param($req, "i", implode(",", $ids));
 		mysqli_stmt_execute($req);
@@ -51,6 +52,9 @@
 	 */
 	function getOneProduct($id_prod)
 	{
+		global $bdd;
+		$resultat = array();
+
 		$req = mysqli_prepare($bdd, 'SELECT id, price FROM products WHERE id=?;');
 		mysqli_stmt_bind_param($req, "i", $id);
 		mysqli_stmt_execute($req);
