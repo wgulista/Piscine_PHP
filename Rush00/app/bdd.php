@@ -13,19 +13,19 @@
 	} catch (Exception $e) {
 		die("Connexion a la base de donnee echoue !");
 	}
-	
+
 	/**
-	 * Recupere le chiffre d'affaire
-	 * @param $id_client correspond a l'id client
+	 * Recupere tout les produits
+	 * @param $ids correspond au id des produits
 	 */
-	function getCA($id_client)
+	function getAllProducts()
 	{
-		$req = mysqli_prepare($bdd, 'SELECT CA FROM client WHERE id=?;');
-		mysqli_stmt_bind_param($req, "i", $id);
+		$req = mysqli_prepare($bdd, 'SELECT * FROM products;');
 		mysqli_stmt_execute($req);
-		mysqli_stmt_bind_result($req, $donnees['CA']);
-		while (mysqli_stmt_fetch($req))
-			$resultat['CA'] = $donnees['CA'];
+		mysqli_stmt_bind_result($req, $d['id'], $d['name'], $d['content'], $d['price']);
+		while (mysqli_stmt_fetch($req)) {
+			$resultat[] = $d;
+		}
 		return ($resultat);
 	}
 
@@ -33,14 +33,14 @@
 	 * Recupere les produits ainsi que le prix
 	 * @param $ids correspond au id des produits
 	 */
-	function getProduits($ids)
+	function getProducts($ids)
 	{
-		$req = mysqli_prepare($bdd, 'SELECT id, prix FROM produit WHERE id IN (?);');
-		mysqli_stmt_bind_param($req, "i", $ids);
+		$req = mysqli_prepare($bdd, 'SELECT id, price FROM products WHERE id IN (?);');
+		mysqli_stmt_bind_param($req, "i", implode(",", $ids));
 		mysqli_stmt_execute($req);
-		mysqli_stmt_bind_result($req, $donnees['id'], $donnees['prix']);
+		mysqli_stmt_bind_result($req, $d['id'], $d['price']);
 		while (mysqli_stmt_fetch($req)) {
-			$resultat['produit'][] = $donnees;
+			$resultat[] = $d;
 		}
 		return ($resultat);
 	}
@@ -49,14 +49,14 @@
 	 * Recupere un produit avec son prix
 	 * @param $id_prod correspond a l'id du produit
 	 */
-	function getOneProduit($id_prod)
+	function getOneProduct($id_prod)
 	{
-		$req = mysqli_prepare($bdd, 'SELECT id, prix FROM produit WHERE id=?;');
+		$req = mysqli_prepare($bdd, 'SELECT id, price FROM products WHERE id=?;');
 		mysqli_stmt_bind_param($req, "i", $id);
 		mysqli_stmt_execute($req);
-		mysqli_stmt_bind_result($req, $donnees['id'], $donnees['prix']);
+		mysqli_stmt_bind_result($req, $d['id'], $d['price']);
 		while (mysqli_stmt_fetch($req)) {
-			$resultat['produit'][] = $donnees;
+			$resultat[] = $d;
 		}
 		return ($resultat);
 	}

@@ -79,25 +79,17 @@ header nav a:hover {
 	display: block;
 	float: left;
 	width: 640px;
-	margin-right: 15px;
 	padding: 10px;
-	margin-bottom: 80px;
-}
-.main .aside {
-	margin-top: 10px;
-	display: block;
-	float: left;
-	width: 260px;
-	height: 100%;
+	margin: 10px 10px 80px 0;
 	background: #f6f6f6;
 	border: 1px solid #e0e0e0;
-	padding: 10px;
 }
 
 .cart_table {
 	display: table;
 	width: 100%;
 }
+
 .cart_table tbody th, .cart_table tbody td {
 	height: 50px;
 	line-height: 50px;
@@ -110,6 +102,7 @@ header nav a:hover {
 }
 
 .list_product .product {
+	position: relative;
 	width: 200px;
 	display: block;
 	float: left;
@@ -117,6 +110,81 @@ header nav a:hover {
 	margin-bottom: 20px;
 	border: 1px solid #e0e0e0;
 }
+
 .list_product .product:last-child {
 	margin-right: 0;
+}
+
+.list_product .product h2, .list_product .product h3 {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin: 3px auto;
+}
+
+.list_product .product .details {
+	display: block;
+	margin: 10px 0 10px 0px;
+	float: left;
+	text-decoration: underline;
+	padding: 5px;
+}
+
+.list_product .product .add_cart {
+	display: block;
+	margin: 10px 0px;
+	float: right;
+	background: #e0e0e0;
+	padding: 5px;
+}
+
+/**************************************************************
+	ASIDE
+**************************************************************/
+.main .aside {
+	position: relative;
+	margin-top: 10px;
+	display: block;
+	float: left;
+	width: 260px;
+	height: 100%;
+	background: #f6f6f6;
+	border: 1px solid #e0e0e0;
+	padding: 10px;
+}
+
+.main .aside h1 {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.main .aside form {
+	display: block;
+	width: 100%;
+}
+
+.main .aside form label {
+	display: block;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 10px;
+}
+
+.main .aside form input {
+	display: block;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 10px;
+}
+
+.main .aside form button {
+	display: block;
+	margin: 10px auto;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
 }

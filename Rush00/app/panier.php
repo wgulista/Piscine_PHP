@@ -6,15 +6,15 @@
 	 * @param $prod_id correspond a l'id du produit 
 	 * Ajoute la variable de type session correspondant a un produit
 	 */
-	public function addProduit($prod_id){
-		if (isset($_SESSION['produit'][$prod_id])) {
-			if ($_SESSION['produit'][$prod_id] > 9) {
-				$_SESSION['produit'][$prod_id] = 10;
+	public function addProduct($prod_id){
+		if (isset($_SESSION['product'][$prod_id])) {
+			if ($_SESSION['product'][$prod_id] > 9) {
+				$_SESSION['product'][$prod_id] = 10;
 			} else {
-				$_SESSION['produit'][$prod_id]++;
+				$_SESSION['product'][$prod_id]++;
 			}
 		} else {
-			$_SESSION['produit'][$prod_id] = 1;
+			$_SESSION['product'][$prod_id] = 1;
 		}
 	}
 
@@ -23,15 +23,15 @@
 	 * @param $prod_id correspond a l'id du produit
 	 * Supprime la variable de type session correspondant a un produit
 	 */
-	public function delProduit($prod_id){
-		if (isset($_SESSION['produit'][$prod_id])) {
-			if ($_SESSION['produit'][$prod_id] >= 2) {
-				$_SESSION['produit'][$prod_id]--;
+	public function delProduct($prod_id){
+		if (isset($_SESSION['product'][$prod_id])) {
+			if ($_SESSION['product'][$prod_id] >= 2) {
+				$_SESSION['product'][$prod_id]--;
 			} else {
-				unset($_SESSION['produit'][$prod_id]);
+				unset($_SESSION['product'][$prod_id]);
 			}
 		} else {
-			unset($_SESSION['produit'][$prod_id]);
+			unset($_SESSION['product'][$prod_id]);
 		}
 	}
 
@@ -40,18 +40,18 @@
 	*/
 	public function prodTotalPrixTTC($prod_id){
 		$total = 0;
-		$ids = $_SESSION['produit'];
+		$ids = $_SESSION['product'];
 		if (empty($ids)) {
-			$produit = array();
+			$product = array();
 		} else {
 			try {
-				$produit = getOneProduit($prod_id);
+				$product = getOneProduct($prod_id);
 			} catch(Exception $e) {
 				echo 'Erreur SQL : '.$e->getMessage().'<br />';
 			}
 		}
-		foreach($produit as $prod){
-			$total += ($prod['prix'] * 1.196 * $_SESSION['produit'][$prod_id]);
+		foreach($product as $prod){
+			$total += ($prod['prix'] * 1.196 * $_SESSION['product'][$prod_id]);
 		}
 		return $total;
 	}
@@ -61,41 +61,23 @@
 	*/
 	public function totalPrixTTC(){
 		$total = 0;
-		$ids = array_keys($_SESSION['produit']);
+		$ids = array_keys($_SESSION['product']);
 		if (empty($ids)) {
-			$produit = array();
+			$product = array();
 		} else {
 			$implode = implode("','", $ids);
 			try {
-				$produit = getProduit($implode);
+				$product = getProduct($implode);
 			}catch(Exception $e){
 				echo 'Erreur SQL : '.$e->getMessage().'<br />'.$sql;'<br />';
 			}
 		}
-		foreach($produit as $prod){
-			$total += $prod->prix * 1.196 * $_SESSION['produit'][$prod->id];
+		foreach($product as $prod){
+			$total += $prod->prix * 1.196 * $_SESSION['product'][$prod->id];
 		}
 		return $total;
 	}
 
-	/*
-	* Teste si un client est ancien ou si il a une commande a plus de 200€ ou 
-	*/
-	public function existeRemise($client, $prix){
-		$chiffreAffaire = getCA($client);
-		$chiffreAffaire = array_shift($chiffreAffaire);
-		return ($chiffreAffaire['CA'] >= 200 || $prix >= 200);
-	}
-
-	/**
-	* Ajoute une remise sur le total si le prix depasse un certain montant
-	*/
-	public function totalAvecRemise($prix, $client) {
-		if (existeRemise($client, $prix)) {
-			// remise = prix * (1 - (5/100));
-		}
-	}
-	
 	/**
 	* Return le montant TVA
 	*/
@@ -108,19 +90,19 @@
 	*/
 	public function prodTotalPrix() {
 		$total = 0;
-		$ids = array_keys($_SESSION['produit']);
+		$ids = array_keys($_SESSION['product']);
 		if (empty($ids)) {
-			$produit = array();
+			$product = array();
 		} else {
 			$implode = implode("','", $ids);
 			try {
-				$produit = getProduit($implode);
+				$product = getProduct($implode);
 			} catch(Exception $e) {
 				echo 'Erreur SQL : '.$e->getMessage().'<br />';
 			}
 		}
-		foreach($produit as $prod) {
-			$total += $prod->prix * $_SESSION['produit'][$prod->id];
+		foreach($product as $prod) {
+			$total += $prod->prix * $_SESSION['product'][$prod->id];
 		}
 		return $total;
 	}

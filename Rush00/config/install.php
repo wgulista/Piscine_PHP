@@ -41,7 +41,8 @@
 		$products = "CREATE TABLE IF NOT EXISTS products(
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			name VARCHAR(255) NOT NULL,
-			content TEXT NULL
+			content TEXT NULL,
+			price INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $products)) {
 		    echo "Product table created successfully;<br/>";
