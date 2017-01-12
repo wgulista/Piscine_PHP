@@ -182,6 +182,11 @@ header nav a:hover {
 	padding: 10px;
 }
 
+.aside_cart {
+	display: block;
+	width: 100%;
+}
+
 h1 {
 	display: block;
 	width: 100%;

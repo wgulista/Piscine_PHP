@@ -14,5 +14,7 @@
 		<h1>Bonjour <?php echo isset($_SESSION['user']['login']) ? ucfirst($_SESSION['user']['login']) : "" ?></h1>
 	<?php endif; ?>
 	<h1>Votre panier</h1>
-	<p>Il n'y a rien dans votre panier</p>
+	<div class="aside_cart">
+		
+	</div>
 </div>

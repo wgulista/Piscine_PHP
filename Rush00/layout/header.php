@@ -6,7 +6,7 @@
 ?><!DOCTYPE html>
 <html>
 <head>
-	<title>Title of the document</title>
+	<title>Minishop</title>
 	<link rel="stylesheet" href="<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>/layout/css/style.css">
 </head>
 <body>
