@@ -13,7 +13,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -23,7 +23,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -33,7 +33,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -43,7 +43,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -53,7 +53,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -63,7 +63,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -73,7 +73,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>
@@ -83,7 +83,7 @@
 				<tr>
 					<td><img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" height="80px" alt=""></td>
 					<td>Une rose magnifique</td>
-					<td>53.25</td>
+					<td>53.25 &euro;</td>
 					<td>
 						<input type="text" style="width:50px;text-align:center" name="quantity" value="10" disabled="true" />
 						<a href=""><img src="http://findicons.com/files/icons/99/office/128/add1.png" height="20" alt=""></a>

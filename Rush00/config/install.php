@@ -10,7 +10,7 @@
 		/* ============================================
 			CREATE DATABASE
 		=============================================*/
-		$dbname = "CREATE DATABASE IF NOT EXISTS minishop";
+		$dbname = "CREATE DATABASE IF NOT EXISTS minishop;";
 		if (mysqli_query($bdd, $dbname)) {
 		    echo "Database minishop created successfully;<br/>";
 		} else {
@@ -28,7 +28,8 @@
 		$users = "CREATE TABLE IF NOT EXISTS users(
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			login VARCHAR(255) NOT NULL,
-			password VARCHAR(255) NOT NULL
+			password VARCHAR(255) NOT NULL,
+			rights INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $users)) {
 		    echo "User table created successfully;<br/>";

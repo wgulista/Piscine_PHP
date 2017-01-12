@@ -8,7 +8,7 @@
 	<div class="main">
 		<header>
 			<div class="container">
-				<div class="logo">Minishop</div>
+				<div class="logo"><a href="index.php">Minishop</a></div>
 				<nav>
 					<a href="index.php">Accueil</a>
 					<a href="panier.php">Panier</a>
