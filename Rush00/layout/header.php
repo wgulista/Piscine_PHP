@@ -13,7 +13,6 @@
 					<a href="index.php">Accueil</a>
 					<a href="panier.php">Panier</a>
 					<a href="inscription.php">S'inscrire</a>
-					<a href="connexion.php">Se connecter</a>
 				</nav>
 			</div>
 		</header>

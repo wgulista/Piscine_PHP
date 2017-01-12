@@ -1,3 +1,8 @@
 <div class="aside">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione recusandae corporis possimus pariatur animi reiciendis assumenda nam cum quae, maxime illo aperiam. Officia ad debitis expedita amet, odio explicabo optio.
+	<h1>Se connecter</h1>	
+	<form action="connexion.php" method="post">
+		<input type="text" name="login">
+		<input type="password" name="password">
+		<button type="submit">Se connecter</button>
+	</form>
 </div>
