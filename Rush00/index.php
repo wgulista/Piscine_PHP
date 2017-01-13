@@ -1,4 +1,4 @@
-<?php include "./layout/header.php"; ?>
+<?PHP include "./layout/header.php"; ?>
 
 	<div class="content">
 		
