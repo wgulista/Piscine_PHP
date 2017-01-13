@@ -1,4 +1,9 @@
-<?php include "../layout/header.php"; ?>
+<?php 
+	include "../layout/header.php"; 
+	if (!estConnecte() && !estAdmin()) {
+		 echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
+	}
+?>
 
 	<div class="content">
 		

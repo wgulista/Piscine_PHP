@@ -26,11 +26,9 @@
 				<?php if (strstr(getcwd(), "administration")): ?>
 				<div class="logo"><a href="../index.php">Minishop</a></div>
 				<nav>
-					<a href="index.php">Admin</a>
-					<?php if (!estConnecte()): ?>
-						
-					<?php else: ?>
-					<a href="../logout.php">Se deconnecter</a>
+					<?php if (estConnecte() && estAdmin()): ?>
+						<a href="index.php">Admin</a>
+						<a href="../logout.php">Se deconnecter</a>
 					<?php endif; ?>
 				</nav>
 				<?php else: ?>
