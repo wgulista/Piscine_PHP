@@ -125,12 +125,14 @@ header nav a:hover {
 }
 
 .list_product .product {
+	background: #fff;
 	position: relative;
 	width: 200px;
 	display: block;
 	float: left;
-	margin-right: 10px;
+	margin-right: 11px;
 	margin-bottom: 20px;
+	border: 1px solid #e0e0e0;
 }
 
 .list_product .product:last-child {
@@ -182,9 +184,18 @@ header nav a:hover {
 	padding: 10px;
 }
 
+.main .aside h1:first-child {
+	margin: 0 auto 15px auto;
+}
+.main .aside h1 {
+	margin: 15px auto;
+}
+
 .aside_cart {
 	display: block;
 	width: 100%;
+	text-align: center;
+	line-height: 20px;
 }
 
 h1 {

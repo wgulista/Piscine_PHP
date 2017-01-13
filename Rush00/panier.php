@@ -4,19 +4,22 @@
 	if (isset($_GET))
 	{
 		foreach ($_GET as $key => $value) {
-			if ($key == 'plus') {
+			if ($key == 'add') {
+				$action = 'add';
+			}else if ($key == 'plus') {
 				$action = 'plus';
-			}
-			if ($key == 'minus') {
+			} else if ($key == 'minus') {
 				$action = 'minus';
-			}
-			if ($key == 'del') {
+			} else if ($key == 'del') {
 				$action = 'del';
 			}
 		}
 		if (!empty($action))
 		{
 			switch ($action) {
+				case 'add':
+					header("Location: panier.php");
+					break;
 				case 'plus':
 					var_dump($action);
 					header("Location: panier.php");
