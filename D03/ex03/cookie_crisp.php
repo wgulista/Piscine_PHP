@@ -1,33 +1,17 @@
 <?php 
 
-	if (isset($_GET) && !empty($_GET))
+	if ($_GET['action'] != "")
 	{
-
-		foreach ($_GET as $key => $value) {
-			if ($key == 'action'){
-				$action = $value;
-			} else if ($key == 'name') {
-				$name = $value;
-			} else if ($key == 'value') {
-				$val = $value;
-			}
-		}
-
-		if ($action == "get")
+		if ($_GET['action'] === "get")
 		{
-			if (!empty($name) && $_COOKIE[$name])
-				echo $_COOKIE[$name]."\n";
-		}
-		else if ($action == "set")
-		{
-			if (!empty($name) && !empty($val))
-				setcookie ($name, $val, time() - 3600,  "cookie.txt");
-		}
-		else if ($action == "del")
-		{
-			if (!empty($name))
-				setcookie ($name, "", time() - 3600,  "cookie.txt");
-
+			if ($_GET['name'] != "" && $_COOKIE[$_GET['name']])
+				echo $_COOKIE[$_GET['name']]."\n";
+		} else if ($_GET['action'] === "set") {
+			if ($_GET['name'] != "" && $_GET['value'] != "")
+				setcookie ($_GET['name'], $_GET['value'], time() + 3600);
+		} else if ($_GET['action'] === "del") {
+			if ($_GET['name'] != "")
+				setcookie ($_GET['name'], "", time() - 3600);
 		}
 	}
 

@@ -233,3 +233,35 @@ form button {
 	height: 30px;
 	line-height: 30px;
 }
+
+.aside .links {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.aside .links h2 {
+	width: 100%;
+	padding-left: 10px;
+}
+
+.aside .links a {
+	width: 100%;
+	display: block;
+	padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -32,6 +32,55 @@
 	}
 
 	/**
+	 * creer un user
+	 * @param $post $_POST values
+	 */
+	function createUser($post)
+	{
+		global $bdd;
+		$resultat = array();
+
+		if (isset($post) && !empty($post))
+		{
+			$req = mysqli_prepare($bdd, 'INSERT INTO users (login, password, rights) VALUES (?, ?, ?);');
+			if ($req == NULL)
+				return (false);
+			if (!empty($post['login']) && !empty($post['password']))
+			{
+				$login = isset($post['login']) ? htmlentities($post['login']) : $post['login'];
+				$password = isset($post['password']) ? htmlentities($post['password']) : $post['password'];
+				$password = md5($password);
+				$rights = 1;
+				mysqli_stmt_bind_param($req, "ssi", $login, $password, $rights );
+				mysqli_stmt_execute($req);
+				return (true);
+			}
+		}
+		return (false);
+	}
+
+	/**
+	 * existance d'un user
+	 * @param $post $_POST values
+	 */
+	function existUser($login)
+	{
+		global $bdd;
+
+		if ($login != NULL)
+		{
+			$req = mysqli_prepare($bdd, 'SELECT login FROM users WHERE login=?;');
+			$user_login = isset($login) ? htmlentities($login) : $login;
+			mysqli_stmt_bind_param($req, "s", $user_login);
+			mysqli_stmt_execute($req);
+			if (mysqli_stmt_fetch($req) === true)
+				return (true);
+
+		}
+		return (false);
+	}
+
+	/**
 	* Teste si un quelconque client est connecté
 	* @return vrai ou faux 
 	*/
