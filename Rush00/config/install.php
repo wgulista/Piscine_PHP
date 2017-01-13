@@ -4,7 +4,7 @@
 		$bdd = mysqli_connect("localhost", "root", "");
 
 		if ($bdd === false) {
-		    die("ERROR: Could not connect. " . mysqli_connect_error());
+		    die("<br/>ERROR: Could not connect. " . mysqli_connect_error());
 		}
 
 		/* ============================================
@@ -12,9 +12,9 @@
 		=============================================*/
 		$dbname = "CREATE DATABASE IF NOT EXISTS minishop;";
 		if (mysqli_query($bdd, $dbname)) {
-		    echo "Database minishop created successfully;<br/>";
+		    echo "<br/>Database minishop created successfully;<br/>";
 		} else {
-		    echo "ERROR: Could not able to execute $dbname.<br/>" . mysqli_error($bdd);
+		    echo "<br/>ERROR: Could not able to execute $dbname.<br/>" . mysqli_error($bdd);
 		}
 		mysqli_close($bdd);
 		
@@ -32,9 +32,20 @@
 			rights INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $users)) {
-		    echo "User table created successfully;<br/>";
+		    echo "<br/>User table created successfully;<br/>";
 		} else {
-		    echo "ERROR: Could not able to execute $users.<br/>" . mysqli_error($bdd);
+		    echo "<br/>ERROR: Could not able to execute $users.<br/>" . mysqli_error($bdd);
+		}
+
+		// Create cart table
+		$categories = "CREATE TABLE IF NOT EXISTS categories(
+			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			name VARCHAR(255) NOT NULL
+		)";
+		if (mysqli_query($bdd, $categories)) {
+		    echo "<br/>Categories table created successfully;<br/>";
+		} else {
+		    echo "<br/>ERROR: Could not able to execute $categories.<br/>" . mysqli_error($bdd);
 		}
 
 		// Create product table
@@ -42,12 +53,13 @@
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			name VARCHAR(255) NOT NULL,
 			content TEXT NULL,
-			price INT NOT NULL
+			price INT NOT NULL,
+			category_id INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $products)) {
-		    echo "Product table created successfully;<br/>";
+		    echo "<br/>Product table created successfully;<br/>";
 		} else {
-		    echo "ERROR: Could not able to execute $products.<br/>" . mysqli_error($bdd);
+		    echo "<br/>ERROR: Could not able to execute $products.<br/>" . mysqli_error($bdd);
 		}
 
 		// Create cart table
@@ -57,14 +69,14 @@
 			product_id INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $carts)) {
-		    echo "Cart table created successfully;<br/>";
+		    echo "<br/>Cart table created successfully;<br/>";
 		} else {
-		    echo "ERROR: Could not able to execute $carts.<br/>" . mysqli_error($bdd);
+		    echo "<br/>ERROR: Could not able to execute $carts.<br/>" . mysqli_error($bdd);
 		}
 
 		mysqli_close($bdd);
 	} catch (Exception $e) {
-		die("Creation des tables echoue");
+		die("Creation des tables echoue !");
 	}
 
 ?>

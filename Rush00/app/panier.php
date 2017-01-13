@@ -1,12 +1,10 @@
 <?php
-	include "./bdd.php";
-
 	/**
 	 * Ajoute un le panier
 	 * @param $prod_id correspond a l'id du produit 
 	 * Ajoute la variable de type session correspondant a un produit
 	 */
-	public function addProduct($prod_id){
+	function addProduct($prod_id) {
 		if (isset($_SESSION['product'][$prod_id])) {
 			if ($_SESSION['product'][$prod_id] > 9) {
 				$_SESSION['product'][$prod_id] = 10;
@@ -23,7 +21,7 @@
 	 * @param $prod_id correspond a l'id du produit
 	 * Supprime la variable de type session correspondant a un produit
 	 */
-	public function delProduct($prod_id){
+	function delProduct($prod_id){
 		if (isset($_SESSION['product'][$prod_id])) {
 			if ($_SESSION['product'][$prod_id] >= 2) {
 				$_SESSION['product'][$prod_id]--;
@@ -38,7 +36,7 @@
 	/**
 	* Affiche le total de tout les produits qui se trouvent dans le panier
 	*/
-	public function prodTotalPrixTTC($prod_id){
+	function prodTotalPrixTTC($prod_id){
 		$total = 0;
 		$ids = $_SESSION['product'];
 		if (empty($ids)) {
@@ -59,7 +57,7 @@
 	/**
 	* Affiche le total de tout les produits qui se trouvent dans le panier
 	*/
-	public function totalPrixTTC(){
+	function totalPrixTTC(){
 		$total = 0;
 		$ids = array_keys($_SESSION['product']);
 		if (empty($ids)) {
@@ -81,14 +79,14 @@
 	/**
 	* Return le montant TVA
 	*/
-	public function montantTVA($prix) {
+	function montantTVA($prix) {
 		return ($prix * 0.196);
 	}
 
 	/**
 	* Affiche le total de tout les produits qui se trouvent dans le panier
 	*/
-	public function prodTotalPrix() {
+	function prodTotalPrix() {
 		$total = 0;
 		$ids = array_keys($_SESSION['product']);
 		if (empty($ids)) {
