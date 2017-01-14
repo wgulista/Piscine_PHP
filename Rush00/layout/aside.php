@@ -1,6 +1,6 @@
 <?php if (strstr(getcwd(), "administration")): ?>
 	<div class="aside">
-		<?php if (estAdmin()) : ?>
+		<?php if (estConnecte() && estAdmin()) : ?>
 		<h1>Action</h1>
 		<div class="links">
 			<h2>Produits</h2>

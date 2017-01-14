@@ -1,9 +1,8 @@
 <?php 
-	include "./layout/header.php";
-	include "./app/user.php";
+	include "../layout/header.php";
 
-	if (!estAdmin()) {
-		header("Location: index.php");
+	if (!estConnecte() && !estAdmin()) {
+		 echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
 	}
 
 ?>
@@ -32,5 +31,5 @@
 			<button type="submit">Envoyer</button>
 		</form>
 	</div>
-	<?php include "./layout/aside.php"; ?>
-<?php include "./layout/footer.php"; ?>		
+	<?php include "../layout/aside.php"; ?>
+<?php include "../layout/footer.php"; ?>		
