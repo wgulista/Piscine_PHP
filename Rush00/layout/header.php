@@ -1,5 +1,5 @@
-<?php 
-	if (session_status() !== PHP_SESSION_ACTIVE) 
+<?php
+	if (session_status() !== PHP_SESSION_ACTIVE)
 		session_start();
 	if (strstr(getcwd(), "administration")) {
 		include dirname(getcwd())."/app/bdd.php";
@@ -40,8 +40,10 @@
 					<a href="inscription.php">S'inscrire</a>
 					<?php elseif(estConnecte() && estAdmin()): ?>
 						<a href="./administration/index.php">Admin</a>
+						<a href="profil.php">Profil</a>
 						<a href="logout.php">Se deconnecter</a>
 					<?php else: ?>
+					<a href="../profil.php">Profil</a>
 					<a href="logout.php">Se deconnecter</a>
 					<?php endif; ?>
 				</nav>
@@ -49,7 +51,7 @@
 			</div>
 		</header>
 		<section>
-			<?php 
+			<?php
 				if (isset($_SESSION['flash']['connect'])) {
 					echo "<div class='flash'>".$_SESSION['flash']['connect']."</div>";
 					unset($_SESSION['flash']['connect']);
