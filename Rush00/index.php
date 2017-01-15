@@ -5,7 +5,13 @@
 		<div class="list_product">
 
 			<?php
-			$resultat = mysqli_query($bdd, 'SELECT * FROM products;');
+			if (isset($_GET['id']) && !empty($_GET['id'])) {
+				$cat_id = intval($_GET['id']);
+				settype($cat_id, 'integer');
+				$resultat = mysqli_query($bdd, 'SELECT * FROM products WHERE category_id='.$cat_id.';');
+			} else {
+				$resultat = mysqli_query($bdd, 'SELECT * FROM products;');
+			}
 			if ( mysqli_fetch_assoc($resultat) == NULL)
 			{
 				echo '<h1>Pas d\'articles</h1>';
