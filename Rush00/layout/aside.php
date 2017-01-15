@@ -1,6 +1,6 @@
 <?php if (strstr(getcwd(), "administration")): ?>
 	<div class="aside">
-		<?php if (estConnecte() && estAdmin()) : ?>
+		<?php if (estAdmin()) : ?>
 		<h1>Action</h1>
 		<div class="links">
 			<h2>Produits</h2>
@@ -10,7 +10,7 @@
 		<div class="links">
 			<h2>Categories</h2>
 			<a href="add_category.php">Ajouter une categorie</a>
-			<a href="show_category.php">Voir les categories</a>	
+			<a href="show_category.php">Voir les categories</a>
 		</div>
 		<div class="links">
 			<h2>Client</h2>
@@ -43,12 +43,20 @@
 	<?php else: ?>
 		<h1>Bonjour <?php echo isset($_SESSION['user']['login']) ? ucfirst($_SESSION['user']['login']) : "" ?></h1>
 	<?php endif; ?>
+	<?php if (!$_SESSION[panier]) {
+		$_SESSION[panier] = [];
+	}?>
+	<?php $i = 0; $tot = 0; foreach ($_SESSION[panier] as $id => $nb) { ?>
+	<?php $req = mysqli_query($bdd, 'SELECT * FROM products WHERE id="'.$id.'"'); ?>
+	<?php $row = mysqli_fetch_assoc($req); ?>
+	<?php $tot += $row[price] * $nb; ?>
+	<?php $i++; } ?>
 	<h1>Dans votre panier</h1>
 	<div class="aside_cart">
 		<p>
-			Il y a <b>5</b> articles <br>
-			Total TTC : <b><?php echo number_format(1044, 2, ",", " "); ?> &euro;</b><br>
-			Total TVA (19.6) : <b><?php echo number_format(872.91, 2, ",", " "); ?> &euro;</b>
+			Il y a <b><?php echo $i; ?></b> articles <br>
+			Total TTC : <b><?php echo number_format($tot, 2, ",", " "); ?> &euro;</b><br>
+			Total TVA (19,6) : <b><?php echo number_format($tot * 0.196, 2, ",", " "); ?> &euro;</b>
 		</p>
 	</div>
 	<h1>Les categories</h1>
