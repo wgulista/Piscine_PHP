@@ -10,7 +10,6 @@
 		<h1>Administration</h1>
 		<h2>Bienvenue, que voulez vous faire ?</h2>
 		
-
 	</div>
 	<?php include "../layout/aside.php"; ?>
 <?php include "../layout/footer.php"; ?>		
