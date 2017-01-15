@@ -19,11 +19,12 @@
 			if (!$_SESSION[panier]) {
 				$_SESSION[panier] = [];
 			}
+			if ($array[quantity] > $_SESSION[panier][$_GET[add]]) {
 			if ($_SESSION[panier][$_GET[add]]) {
 				$_SESSION[panier][$_GET[add]] += $_GET[quantity];
 			} else {
 				$_SESSION[panier][$_GET[add]] = $_GET[quantity];
-			}
+			}}
 		} else if ($_GET[del]) {																	//del product
 			$query = 'SELECT * FROM products WHERE id="'.$_GET[del].'"';
  			$array = mysqli_query($bdd, $query);
