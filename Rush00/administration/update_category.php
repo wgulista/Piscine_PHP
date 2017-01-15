@@ -7,8 +7,8 @@
 
 	if (isset($_GET['id']) && !empty($_GET['id'])) {
 		$id = intval($_GET['id']);
-		$resultat = mysqli_query($bdd, 'SELECT * FROM categories WHERE id='.$id);
-		if (is_numeric($id) && isset($_POST)  && !empty($_POST))
+		$res = mysqli_query($bdd, 'SELECT * FROM categories WHERE id='.$id);
+		if ($res != NULL && is_numeric($id) && isset($_POST)  && !empty($_POST))
 		{
 			$name = isset($_POST['name']) ? htmlentities($_POST['name']) : $_POST['name'];
 			settype( $name , 'string');
