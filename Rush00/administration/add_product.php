@@ -1,7 +1,7 @@
 <?php 
 	include "../layout/header.php";
 
-	if (!estConnecte() && !estAdmin()) {
+	if ((!estConnecte() && !estAdmin()) || (estConnecte() && !estAdmin())) {
 		 echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
 	}
 
@@ -21,12 +21,21 @@
 		settype($category_id, 'integer');
 
 		$error = array();
-		if (!is_string($name) || is_string($description) || !is_string($image)) {
-			echo "Titre, contenu ou image incorrecte <br />";
-		} else if (!is_double($price)) {
-			echo "Le prix n'est pas correcte <br />";
-		} else if (!is_string($quantity) || $is_string($category_id)) {
-			echo "quantite ou categorie invalide <br />";
+		if (!is_string($name) || !is_string($description) || !is_string($image)) {
+			$error['string'] = "Titre, contenu ou image incorrecte \t - ";
+		}
+		if (!is_double($price)) {
+			$error['double'] = "Le prix n'est pas correcte\t - ";
+		}
+		if (!is_numeric($quantity) || !is_numeric($category_id)) {
+			$error['integer'] = "Quantite ou categorie invalide <br />";
+		} 
+		if (!empty($error)){
+			echo "<div class='flash'>";
+			foreach ($error as $value) {
+				echo $value;
+			}
+			echo "</div>";
 		} else {
 			$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, image, quantity, category_id) VALUES (?, ?, ?, ?, ?, ?);');
 			mysqli_stmt_bind_param($req, "ssisii", $name, $description, $price, $image, $quantity, $category_id);
@@ -35,7 +44,6 @@
 	}
 
 ?>
-
 	<div class="content">
 		<h1>Ajouter un produit</h1>
 		<form action="add_product.php" method="post">

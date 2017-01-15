@@ -1,6 +1,6 @@
 <?php 
 	include "../layout/header.php"; 
-	if (!estConnecte() && !estAdmin()) {
+	if ((!estConnecte() && !estAdmin()) || (estConnecte() && !estAdmin())) {
 		 echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
 	}
 ?>
