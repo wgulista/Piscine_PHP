@@ -5,6 +5,36 @@
 		 echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../index.php">';
 	}
 
+	if (isset($_POST) && !empty($_POST)) {
+		$name = isset($_POST['name']) ? htmlentities($_POST['name']) : $_POST['name'];
+		$description = isset($_POST['description']) ? htmlentities($_POST['description']) : $_POST['description'];
+		$price = isset($_POST['price']) ? htmlentities($_POST['price']) : $_POST['price'];
+		$quantity = isset($_POST['quantity']) ? htmlentities($_POST['quantity']) : $_POST['quantity'];
+		$category_id = isset($_POST['category_id']) ? htmlentities($_POST['category_id']) : $_POST['category_id'];
+
+		settype($name, 'string');
+		settype($description, 'string');
+		settype($price, 'double');
+		settype($quantity, 'integer');
+		settype($category_id, 'integer');
+
+		if (!is_string($name) || $is_string($description)) {
+			echo "Titre ou contenu incorrect <br />";
+		}
+
+		if (!is_double($price)) {
+			echo "Le prix n'est pas correcte <br />";
+		}
+
+		if (!is_string($quantity) || $is_string($category_id)) {
+			echo "quantite ou categorie invalide <br />";
+		}
+
+		$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, quantity, category_id) VALUES (?, ?, ?, ?, ?);');
+		mysqli_stmt_bind_param($req, "ssiii", $name, $description, $price, $quantity, $category_id);
+		mysqli_stmt_execute($req);
+	}
+
 ?>
 
 	<div class="content">
@@ -23,9 +53,16 @@
 			<input type="text" name="quantity">
 
 			<label for="categorie">Categorie</label>
-			<input type="text" name="categorie">
 			<select name="categorie" id="categorie">
 				<option>Select Category</option>
+				<?php 
+				$resultat =  mysqli_query($bdd, 'SELECT id, name FROM categories;');
+				while ($d = mysqli_fetch_assoc($resultat)) { ?>
+					<option value="<?php echo $d['id']; ?>"><?php echo $d['name']; ?></option>
+				<?php
+				}
+				mysqli_free_result($resultat);
+				?>
 			</select>
 
 			<button type="submit">Envoyer</button>

@@ -20,7 +20,7 @@
 			<input type="text" name="login">
 			<label for="password">Mot de passe</label>
 			<input type="password" name="password">
-			<button type="submit">Se connecter</button>
+			<button type="submit">s'inscrire</button>
 		</form>
 	</div>
 	<?php include "./layout/aside.php"; ?>

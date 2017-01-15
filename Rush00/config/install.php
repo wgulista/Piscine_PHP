@@ -53,7 +53,9 @@
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			name VARCHAR(255) NOT NULL,
 			content TEXT NULL,
-			price INT NOT NULL,
+			image VARCHAR(255) NULL,
+			price DOUBLE DEFAULT 0,
+			quantity INT DEFAULT 0,
 			category_id INT NOT NULL
 		)";
 		if (mysqli_query($bdd, $products)) {
@@ -66,7 +68,8 @@
 		$carts = "CREATE TABLE IF NOT EXISTS carts(
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			user_id INT NOT NULL,
-			product_id INT NOT NULL
+			product_id INT NOT NULL,
+			valid TINYINT NOT NULL
 		)";
 		if (mysqli_query($bdd, $carts)) {
 		    echo "<br/>Cart table created successfully;<br/>";

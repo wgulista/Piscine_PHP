@@ -13,7 +13,6 @@
 			if (is_string($_POST['name'])) {
 				mysqli_stmt_bind_param($req, "s", $name );
 				mysqli_stmt_execute($req);
-				//echo '<META HTTP-EQUIV="Refresh" Content="0; URL=add_category.php">';
 			} 
 		}
 	}
