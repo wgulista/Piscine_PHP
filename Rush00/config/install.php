@@ -33,6 +33,13 @@
 		)";
 		if (mysqli_query($bdd, $users)) {
 		    echo "<br/>User table created successfully;<br/>";
+		    $login = "wgulista";
+		    $password = md5("test");
+		    $rights = 100;
+		    $req = mysqli_prepare($bdd, 'INSERT INTO users (login, password, rights) VALUES (?, ?, ?);');
+			mysqli_stmt_bind_param($req, "ssi", $login, $password, $rights);
+			mysqli_stmt_execute($req);
+			echo "<br/>User account created successfully;<br/>";
 		} else {
 		    echo "<br/>ERROR: Could not able to execute $users.<br/>" . mysqli_error($bdd);
 		}

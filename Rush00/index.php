@@ -3,13 +3,27 @@
 	<div class="content">
 		
 		<div class="list_product">
-			<div class="product">
-				<h2>Titre</h2>
-				<img src="http://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.jpg" width="200px" alt="">
-				<h3>59.65 &euro;</h3>
-				<a class="details" href="info_product.php?id=1">Details</a>
-				<a class="add_cart" href="panier.php?add=1">Ajouter au panier</a>
-			</div>
+
+			<?php 
+			$resultat = mysqli_query($bdd, 'SELECT * FROM products;');
+			if ( mysqli_fetch_assoc($resultat) == NULL)
+			{
+				echo '<h1>Pas d\'articles</h1>';
+			}else {
+				while ($d = mysqli_fetch_assoc($resultat)) { ?>
+					<div class="product">
+						<h2><?php echo $d['name']; ?></h2>
+						<img src="<?php echo $d['image']; ?>" width="200px" alt="">
+						<h3><?php echo $d['price']; ?> &euro;</h3>
+						<a class="details" href="info_product.php?id=<?php echo $d['id']; ?>">Details</a>
+						<a class="add_cart" href="panier.php?add=<?php echo $d['id']; ?>">Ajouter au panier</a>
+					</div>
+			<?php
+				}
+			}
+			mysqli_free_result($resultat);
+			?>
+
 		</div>
 
 	</div>

@@ -9,17 +9,19 @@
 		$name = isset($_POST['name']) ? htmlentities($_POST['name']) : $_POST['name'];
 		$description = isset($_POST['description']) ? htmlentities($_POST['description']) : $_POST['description'];
 		$price = isset($_POST['price']) ? htmlentities($_POST['price']) : $_POST['price'];
+		$image = isset($_POST['image']) ? htmlentities($_POST['image']) : $_POST['image'];
 		$quantity = isset($_POST['quantity']) ? htmlentities($_POST['quantity']) : $_POST['quantity'];
 		$category_id = isset($_POST['category_id']) ? htmlentities($_POST['category_id']) : $_POST['category_id'];
 
 		settype($name, 'string');
 		settype($description, 'string');
 		settype($price, 'double');
+		settype($image, 'string');
 		settype($quantity, 'integer');
 		settype($category_id, 'integer');
 
-		if (!is_string($name) || $is_string($description)) {
-			echo "Titre ou contenu incorrect <br />";
+		if (!is_string($name) || is_string($description) || !is_string($image)) {
+			echo "Titre, contenu ou image incorrecte <br />";
 		}
 
 		if (!is_double($price)) {
@@ -30,8 +32,8 @@
 			echo "quantite ou categorie invalide <br />";
 		}
 
-		$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, quantity, category_id) VALUES (?, ?, ?, ?, ?);');
-		mysqli_stmt_bind_param($req, "ssiii", $name, $description, $price, $quantity, $category_id);
+		$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, image, quantity, category_id) VALUES (?, ?, ?, ?, ?, ?);');
+		mysqli_stmt_bind_param($req, "ssisii", $name, $description, $price, $image, $quantity, $category_id);
 		mysqli_stmt_execute($req);
 	}
 
@@ -48,6 +50,9 @@
 
 			<label for="price">Prix</label>
 			<input type="text" name="price">
+
+			<label for="price">Image URL</label>
+			<input type="text" name="image">
 
 			<label for="quantity">Quantit&eacute;</label>
 			<input type="text" name="quantity">
