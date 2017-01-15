@@ -63,7 +63,7 @@
 			<input type="text" name="quantity">
 
 			<label for="categorie">Categorie</label>
-			<select name="categorie" id="categorie">
+			<select name="category_id" id="categorie">
 				<option>Select Category</option>
 				<?php 
 				$resultat =  mysqli_query($bdd, 'SELECT id, name FROM categories;');

@@ -17,7 +17,6 @@
 		}
 	}
 ?>
-
 	<div class="content">
 		<h1>Ajouter une categorie</h1>
 		<form action="add_category.php" method="post">

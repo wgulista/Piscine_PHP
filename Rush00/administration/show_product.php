@@ -20,8 +20,8 @@
 					<th>Delete</th>
 				</tr>
 				<?php 
-				$resultat = mysqli_query($bdd, 'SELECT * FROM products;');
-				while ($d = mysqli_fetch_assoc($resultat)) { ?>
+				$resultat = mysqli_query($bdd, "SELECT * FROM products p LEFT JOIN categories c ON (p.category_id = c.id);");
+				while ($d = mysqli_fetch_assoc($resultat)) { var_dump($d);?>
 					<tr>
 						<td><?php echo $d['id']; ?></td>
 						<td><?php echo $d['name']; ?></td>
