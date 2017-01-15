@@ -20,21 +20,18 @@
 		settype($quantity, 'integer');
 		settype($category_id, 'integer');
 
+		$error = array();
 		if (!is_string($name) || is_string($description) || !is_string($image)) {
 			echo "Titre, contenu ou image incorrecte <br />";
-		}
-
-		if (!is_double($price)) {
+		} else if (!is_double($price)) {
 			echo "Le prix n'est pas correcte <br />";
-		}
-
-		if (!is_string($quantity) || $is_string($category_id)) {
+		} else if (!is_string($quantity) || $is_string($category_id)) {
 			echo "quantite ou categorie invalide <br />";
+		} else {
+			$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, image, quantity, category_id) VALUES (?, ?, ?, ?, ?, ?);');
+			mysqli_stmt_bind_param($req, "ssisii", $name, $description, $price, $image, $quantity, $category_id);
+			mysqli_stmt_execute($req);
 		}
-
-		$req = mysqli_prepare($bdd, 'INSERT INTO products (name, content, price, image, quantity, category_id) VALUES (?, ?, ?, ?, ?, ?);');
-		mysqli_stmt_bind_param($req, "ssisii", $name, $description, $price, $image, $quantity, $category_id);
-		mysqli_stmt_execute($req);
 	}
 
 ?>
