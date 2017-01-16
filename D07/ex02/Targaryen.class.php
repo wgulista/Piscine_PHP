@@ -3,7 +3,7 @@
 	class Targaryen
 	{
 		
-		public function resistsFire() {
+		public function resistsFire()	 {
 			return false;
 		}
 
@@ -14,6 +14,7 @@
 				return "emerges naked but unharmed";
 			}
 		}
+		
 	}
 
 ?>
