@@ -10,18 +10,29 @@
 		}
 
 		.ballon {
+			margin: 50px auto;
 			width : 200px;
 			height : 200px;
+			background: #ff0000;
+			border-radius: 100px;
 		}
 
 	</style>
 <body>
 
-<div id="ballon" class="ballon"></div>
+<div id="ballon" onClick="gonfle()" class="ballon"></div>
 
 <script type="text/javascript">
 	
 	const ballon = document.querySelector("#ballon");
+
+	function gonfle() {
+		ballon.offsetWidth += 20;
+	}
+
+	function degonfle () {
+
+	}
 
 </script>
 
