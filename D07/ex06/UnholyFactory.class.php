@@ -9,7 +9,9 @@
 				print "(Factory can't absorb this, it's not a fighter)\n";
 				return;
 			}
-			var_dump($this->absorb[$obj->type]);
+			if ($ob instanceof Fighter) {
+				$this->absorb[$obj->type] = $obj->type;
+			}
 			if ($this->absorb[$obj->type]["count"] < 1) {
 				$this->absorb[$obj->type]["count"] = 1;
 				$this->absorb[$obj->type]["class"] = get_class($obj);

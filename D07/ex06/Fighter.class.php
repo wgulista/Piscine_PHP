@@ -2,7 +2,7 @@
 
 	abstract class Fighter
 	{
-		public $type;
+		public $type = null;
 
 		abstract public function fight($fighter);
 
