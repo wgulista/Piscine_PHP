@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calc</title>
+	</head>
+	<style type="text/css">
+		body, html {
+			margin: 0;
+			padding: 0;
+		}
+
+		.calc {
+			display: block;
+			width: 600px;
+			margin: 20px auto;
+		}
+
+		input, select {
+			font-size: 16px;
+			text-align: center;
+		}
+
+	</style>
+<body>
+
+	<div class="calc">
+		<input type="text" id="left" placeholder="Entrez un chiffre">
+		<select id="operateur">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<input type="text" id="right" placeholder="Entrez un chiffre">
+		<input type="submit" id="submit" value="Try me!">
+	</div>
+
+<script type="text/javascript">
+
+	var submit = document.querySelector("#submit");
+
+	function calcul() {
+		var left = document.querySelector("#left");
+		var right = document.querySelector("#right");
+		var operateur = document.querySelector("#operateur");
+		var result = 0;
+
+		if (left.value >= 0 && right.value >= 0) {
+
+			if (right.value == 0 && (operateur.value == '/' || operateur.value == '%'))
+			{
+				alert("It's over 9000!");
+				console.log("It's over 9000!");
+				return;
+			}
+
+			if (operateur.value == '+') {
+				result = parseInt(left.value) + parseInt(right.value);
+			}
+			else if (operateur.value == '-') {
+				result = left.value - right.value;
+			}
+			else if (operateur.value == '*') {
+				result = left.value * right.value;
+			}
+			else if (operateur.value == '/') {
+				result = left.value / right.value;
+			}
+			else if (operateur.value == '%') {
+				result = left.value % right.value;
+			}
+			else {
+				alert ("Vous avez change les operateurs !!");
+			}
+			alert (result);
+			console.log(result);
+
+		}else {
+			alert("Error :(");
+			console.log("Error :(");
+		}
+
+	}
+
+	submit.addEventListener('click', calcul);
+	setInterval(alert, 30000, "Please, use me...");
+</script>
+
+</body>
+</html>
