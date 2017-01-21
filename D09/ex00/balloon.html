@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Balloon</title>
+	</head>
+	<style type="text/css">
+		body, html {
+			margin: 0;
+			padding: 0;
+		}
+
+		.balloon {
+			margin: 50px auto;
+			width : 200px;
+			height : 200px;
+			background: #ff0000;
+			border-radius: 100px;
+		}
+
+	</style>
+<body>
+
+<div id="balloon" class="balloon"></div>
+
+<script type="text/javascript">
+	
+	let balloon = document.querySelector("#balloon");
+	let color = ["red", "green", "blue"];
+	let hauteur = balloon.offsetHeight;
+	let largeur = balloon.offsetWidth;
+	let i = 1;
+
+	function gonfle() {
+		hauteur += 10;
+		largeur += 10;
+		borderRadius = 10 + "px";
+		balloon.style.borderRadius = (largeur / 2) + "px";
+		if (hauteur > 420) {
+			hauteur = largeur = 200;
+		}
+		balloon.style.width = largeur + "px";
+		balloon.style.height = hauteur + "px";
+		i++;
+		if (i == 3) 
+			i = 0;
+		balloon.style.backgroundColor = color[i];
+	}
+
+	function degonfle () {
+		hauteur -= 5;
+		largeur -= 5;
+		balloon.style.borderRadius = (largeur / 1.5) + "px";
+		if (hauteur < 200) {
+			hauteur = largeur = 200;
+		}
+		balloon.style.width = largeur + "px";
+		balloon.style.height = hauteur + "px";
+		i--;
+		if (i < 0) 
+			i = 3 + i;
+		balloon.style.backgroundColor = color[i];
+	}
+
+	balloon.addEventListener('click', gonfle);
+	balloon.addEventListener('mouseout', degonfle);
+</script>
+
+</body>
+</html>
